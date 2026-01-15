@@ -164,7 +164,7 @@ for i = 1 : row
         end
         vv(nq + 1, :) = t;
         rerr = max(abs((t - vv(nq, :)) ./ t));
-        if rerr <= 1e-13
+        if isnan(rerr) || rerr <= 1e-13
             break;
         end
     end

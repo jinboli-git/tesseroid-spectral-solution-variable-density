@@ -40,12 +40,12 @@ plot(x * 1e-3, frho_par(x), "LineWidth", linewidth);
 xlim([R1, R2] * 1e-3);
 xticks(6361 : 2 : 6371)
 xlabel('Radius (km)', 'Interpreter', 'latex');
-ylabel('Radial density functions (kg/m$^3$)', 'Interpreter', 'latex');
+ylabel('Radial density functions ($\mathrm{kg~m^{-3}}$)', 'Interpreter', 'latex');
 grid on
 legend('Polynomial', 'Exponential', 'Parabolic', 'fontsize', fontsize, 'NumColumns', 1, 'Interpreter', 'latex');
 set(gca, 'FontSize', fontsize, 'GridLineStyle', '--', 'XMinorTick', true, 'YMinorTick', true);
 set(gcf,'Units','centimeters','Position', [1.3, 3, 8, 6]);
-exportgraphics(gcf, '../manuscript/JG/figures/density.pdf');
+exportgraphics(gcf, '../manuscript/marked/density.pdf');
 % dis tesseroid
 dlat = 1;
 nmax = 180;
@@ -167,7 +167,7 @@ xticks(2 : 6 : 32)
 yticks(-16 : 4 : 0);
 ylim([-16, 0]);
 set(gca, 'YMinorTick', 'on');
-ylabel('Relative errors in log10', 'Interpreter', 'latex');
+ylabel('Relative errors in $\log_{10}$', 'Interpreter', 'latex');
 title('(a)', 'FontSize', fontsize, 'Interpreter', 'latex');
 grid on
 set(gca,'FontSize', fontsize, 'GridLineStyle', '--', 'XMinorTick', true, 'YMinorTick', true);
@@ -183,7 +183,7 @@ ylim([0, 40]);
 yticks(0: 10: 40);
 xticks(2 : 6 : 32)
 set(gca, 'YMinorTick', 'on');
-ylabel('Computation time (s)', 'Interpreter', 'latex');
+ylabel('Computation times (s)', 'Interpreter', 'latex');
 title('(d)', 'FontSize', fontsize, 'Interpreter', 'latex');
 grid on
 set(gca,'FontSize', fontsize, 'GridLineStyle', '--', 'XMinorTick', true, 'YMinorTick', true);
@@ -196,7 +196,7 @@ line([2, 32], [re_exp_ml, re_exp_ml], 'LineStyle', '-.', "LineWidth", linewidth,
 scatter(Nq(11 - 1) , re_exp_qlg(11 - 1), 80, 'x', 'filled', 'MarkerEdgeColor', 'k', 'LineWidth', 1.2);
 yticks(-16:4:0);
 ylim([-16, 0]);
-ylabel('Relative errors in log10', 'Interpreter', 'latex');
+ylabel('Relative errors in $\log_{10}$', 'Interpreter', 'latex');
 xlim([2, 32]);
 xticks(2 : 6 : 32)
 yticks(-16 : 4 : 0);
@@ -218,7 +218,7 @@ yticks(0: 10: 40);
 xticks(2 : 6 : 32)
 title('(e)', 'FontSize', fontsize, 'Interpreter', 'latex');
 grid on
-ylabel('Computation time (s)', 'Interpreter', 'latex');
+ylabel('Computation times (s)', 'Interpreter', 'latex');
 set(gca,'FontSize', fontsize, 'GridLineStyle', '--', 'XMinorTick', true, 'YMinorTick', true);
 
 nexttile(inner)
@@ -234,7 +234,7 @@ xticks(2 : 6 : 32)
 yticks(-16 : 4 : 0);
 ylim([-16, 0]);
 set(gca, 'YMinorTick', 'on');
-ylabel('Relative errors in log10', 'Interpreter', 'latex');
+ylabel('Relative errors in $\log_{10}$', 'Interpreter', 'latex');
 title('(c)', 'FontSize', fontsize, 'Interpreter', 'latex');
 grid on
 set(gca,'FontSize', fontsize, 'GridLineStyle', '--', 'XMinorTick', true, 'YMinorTick', true);
@@ -250,7 +250,7 @@ ylim([0, 40]);
 yticks(0: 10: 40);
 xticks(2 : 6 : 32)
 title('(f)', 'FontSize', fontsize, 'Interpreter', 'latex');
-ylabel('Computation time (s)', 'Interpreter', 'latex');
+ylabel('Computation times (s)', 'Interpreter', 'latex');
 xlabel(inner, 'The order of the quadrature $N_{q}$', 'Interpreter', 'latex', 'fontsize', fontsize);
 grid on
 set(gca,'FontSize', fontsize, 'GridLineStyle', '--', 'XMinorTick', true, 'YMinorTick', true);
@@ -268,7 +268,7 @@ leg.Layout.Tile = 'South';
 leg.Box = "off";
 leg.ItemTokenSize = [20, 20];
 set(gcf,'Units','centimeters','Position', [1.3 3 13, 15]);
-exportgraphics(gcf, '../manuscript/JG/figures/shell_vd.pdf');
+exportgraphics(gcf, '../manuscript/marked/shell_vd.pdf');
 %%
 sha_glq = @(xlon0, xlat0, xdlat, xdlon) tess2Vnm_glq(xlon0, xlat0, R1, R2, frho_poly, nmax, "a", a, "M", M, "Nq", [], "szm", [xdlat, xdlon]);
 sha_ml = @(xlon0, xlat0, xdlat, xdlon) tess2Vnm_multLayer(xlon0, xlat0, R1, R2, frho_poly, nmax, "a", a, "M", M, "szm", [xdlat, xdlon]);

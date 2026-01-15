@@ -39,7 +39,7 @@ dsn_1 = dsigma(vnm_1);
 dsn_10 = dsigma(vnm_10);
 %% plot
 fontsize = 9;
-cmp = [0.85, 0.10, 0.10; 0.00, 0.45, 0.74; 0.20, 0.60, 0.20; 1.00, 0.60, 0.00; 0.50, 0.20, 0.70; [255 215 0]/255; 0.55, 0.27, 0.07; 1.00, 0.60, 0.80; 0.6, 0.6, 0.6; 0, 0, 0];
+cmp = [0.85, 0.10, 0.10; 0.00, 0.45, 0.74; 0.20, 0.60, 0.20; 1.00, 0.60, 0.00; 0.50, 0.20, 0.70; [255 215 0] / 255; 0.55, 0.27, 0.07; 1.00, 0.60, 0.80; 0.6, 0.6, 0.6; 0, 0, 0];
 fig = figure;
 tiledlayout(1, 1, "Padding", "compact", 'TileSpacing', 'compact', Parent=fig);
 nexttile
@@ -66,7 +66,7 @@ ylabel('Normalized degree variances in $\log_{10}$', 'Interpreter', 'latex');
 set(gca, 'FontSize', fontsize);
 
 set(gcf,'Units','centimeters','Position',[1.3, 3, 13, 8]);
-exportgraphics(gcf, '../manuscript/JG/figures/tess_NDV.pdf');
+exportgraphics(gcf, '../manuscript/marked/tess_NDV.pdf');
 %%
 dlat = 1;
 vnm = sha(lon0, lat0, 10000, dlat, dlat);
@@ -120,7 +120,7 @@ set(gca, 'FontSize', fontsize, 'GridLineStyle', '--', 'XMinorTick', true, 'YMino
 ylim([-500, 0]);
 xlim([0, 10000]);
 xticks(0 : 2000 : 10000);
-yticks(-500:100:0);
+yticks(-500 : 100 : 0);
 grid on
 title('(a) $h=260\ \mathrm{km}$', 'Interpreter', 'latex', 'fontsize', fontsize);
 ylabel(inner, 'Normalized power spectra in $\log_{10}$', 'Interpreter', 'latex', 'fontsize', fontsize);
@@ -129,7 +129,7 @@ set(gca, 'FontSize', fontsize);
 rectangle('Position', [0, -30, 600, 30], 'LineWidth', 1.2);
 annotation('arrow', [0.14, 0.25], [0.92, 0.78], 'Color', [0.6, 0.6, 0.6, 0.6]);
 
-ax_inset = axes('Units', 'centimeters', 'Position', [2.1, 7.3, 5, 4], Parent=fig);  % [left bottom width height]
+ax_inset = axes('Units', 'centimeters', 'Position', [2.1, 7.3, 5, 4], Parent=fig);
 box on
 plot(x, pv_1_260, 'LineWidth', 1, 'Color', cmp(1, :), 'LineStyle', '--'); 
 hold on
@@ -183,7 +183,7 @@ leg.Layout.Tile = 'South';
 leg.Box = "off";
 
 set(gcf,'Units','centimeters','Position',[1.3, 3, 13, 15]);
-exportgraphics(gcf, '../manuscript/JG/figures/tess_NPS.pdf', 'ContentType','vector');
+exportgraphics(gcf, '../manuscript/marked/tess_NPS.pdf', 'ContentType','vector');
 %% h
 dlat = 1;
 nmax = 180;
@@ -217,13 +217,13 @@ load ../data/vref_h_1.mat
 for i = 1 : num
     h = H(i);
     v_cal = shs(vnm, nmax, h, 'v');
-    vz_cal = shs(vnm, nmax, h, 'vz') / 1e5;
-    vzz_cal = shs(vnm, nmax, h, 'vzz') / 1e9;
-    vxx_cal = shs(vnm, nmax, h, 'vxx') / 1e9;
-    vyy_cal = shs(vnm, nmax, h, 'vyy') / 1e9;
-    vzzz_cal = shs(vnm, nmax, h, 'vzzz') / 1e15;
-    vxxz_cal = shs(vnm, nmax, h, 'vxxz') / 1e15;
-    vyyz_cal = shs(vnm, nmax, h, 'vyyz') / 1e15;
+    vz_cal = shs(vnm, nmax, h, 'vz');
+    vzz_cal = shs(vnm, nmax, h, 'vzz');
+    vxx_cal = shs(vnm, nmax, h, 'vxx');
+    vyy_cal = shs(vnm, nmax, h, 'vyy');
+    vzzz_cal = shs(vnm, nmax, h, 'vzzz');
+    vxxz_cal = shs(vnm, nmax, h, 'vxxz');
+    vyyz_cal = shs(vnm, nmax, h, 'vyyz');
 
     ae_v_1(i) = AE(v_cal, v_ref(i));
     ae_vz_1(i) = AE(vz_cal, vz_ref(i));
@@ -276,13 +276,13 @@ load ../data/vref_h_1_12.mat
 for i = 1 : num
     h = H(i);
     v_cal = shs(vnm, nmax, h, 'v');
-    vz_cal = shs(vnm, nmax, h, 'vz') / 1e5;
-    vzz_cal = shs(vnm, nmax, h, 'vzz') / 1e9;
-    vxx_cal = shs(vnm, nmax, h, 'vxx') / 1e9;
-    vyy_cal = shs(vnm, nmax, h, 'vyy') / 1e9;
-    vzzz_cal = shs(vnm, nmax, h, 'vzzz') / 1e15;
-    vxxz_cal = shs(vnm, nmax, h, 'vxxz') / 1e15;
-    vyyz_cal = shs(vnm, nmax, h, 'vyyz') / 1e15;
+    vz_cal = shs(vnm, nmax, h, 'vz');
+    vzz_cal = shs(vnm, nmax, h, 'vzz');
+    vxx_cal = shs(vnm, nmax, h, 'vxx');
+    vyy_cal = shs(vnm, nmax, h, 'vyy');
+    vzzz_cal = shs(vnm, nmax, h, 'vzzz');
+    vxxz_cal = shs(vnm, nmax, h, 'vxxz');
+    vyyz_cal = shs(vnm, nmax, h, 'vyyz');
 
     ae_v_12(i) = AE(v_cal, v_ref(i));
     ae_vz_12(i) = AE(vz_cal, vz_ref(i));
@@ -410,12 +410,13 @@ leg = legend('$V$', '$V_z$', '$V_{zz}$', '$V_{xx}$', '$V_{yy}$', '$V_{zzz}$', '$
 leg.Box = "off";
 leg.Layout.Tile = 'South';
 set(gcf,'Units','centimeters','Position', [1.3 3 13, 15]);
-exportgraphics(gcf, '../manuscript/JG/figures/tess_h.pdf');
+exportgraphics(gcf, '../manuscript/marked/tess_h.pdf');
 %% nmax
 h = 260 * 1e3;
 dlat = 1;
 lat1 = lat0 - dlat / 2; lat2 = lat0 + dlat / 2;
-load ../data/vref_Nmax.mat
+
+load ../data/vref_1_h260.mat
 
 Nmax = 0 : 50 : 2000;
 vnm = sha(lon0, lat0, Nmax(end), dlat, dlat);
@@ -444,13 +445,13 @@ re_nmax_1_260_vyyz = zeros(num, 1);
 for i = 1 : num
     nmax = Nmax(i);
     v_cal = shs(vnm, nmax, h, 'v');
-    vz_cal = shs(vnm, nmax, h, 'vz') / 1e5;
-    vzz_cal = shs(vnm, nmax, h, 'vzz') / 1e9;
-    vxx_cal = shs(vnm, nmax, h, 'vxx') / 1e9;
-    vyy_cal = shs(vnm, nmax, h, 'vyy') / 1e9;
-    vzzz_cal = shs(vnm, nmax, h, 'vzzz') / 1e15;
-    vxxz_cal = shs(vnm, nmax, h, 'vxxz') / 1e15;
-    vyyz_cal = shs(vnm, nmax, h, 'vyyz') / 1e15;
+    vz_cal = shs(vnm, nmax, h, 'vz');
+    vzz_cal = shs(vnm, nmax, h, 'vzz');
+    vxx_cal = shs(vnm, nmax, h, 'vxx');
+    vyy_cal = shs(vnm, nmax, h, 'vyy');
+    vzzz_cal = shs(vnm, nmax, h, 'vzzz');
+    vxxz_cal = shs(vnm, nmax, h, 'vxxz');
+    vyyz_cal = shs(vnm, nmax, h, 'vyyz');
 
     ae_nmax_1_260_v(i) = AE(v_cal, v_ref);
     ae_nmax_1_260_vz(i) = AE(vz_cal, vz_ref);
@@ -473,9 +474,8 @@ for i = 1 : num
     re_nmax_1_260_vyyz(i) = RE(vyyz_cal, vyyz_ref);
 end
 
-%
 h = 10 * 1e3;
-load ../data/vref_12_h_10000.mat
+load ../data/vref_1_12_h10.mat
 
 Nmax = 0 : 50 : 10000;
 num = length(Nmax);
@@ -503,13 +503,13 @@ vnm = vnm_1_2;
 for i = 1 : num
     nmax = Nmax(i);
     v_cal = shs(vnm, nmax, h, 'v');
-    vz_cal = shs(vnm, nmax, h, 'vz') / 1e5;
-    vzz_cal = shs(vnm, nmax, h, 'vzz') / 1e9;
-    vxx_cal = shs(vnm, nmax, h, 'vxx') / 1e9;
-    vyy_cal = shs(vnm, nmax, h, 'vyy') / 1e9;
-    vzzz_cal = shs(vnm, nmax, h, 'vzzz') / 1e15;
-    vxxz_cal = shs(vnm, nmax, h, 'vxxz') / 1e15;
-    vyyz_cal = shs(vnm, nmax, h, 'vyyz') / 1e15;
+    vz_cal = shs(vnm, nmax, h, 'vz');
+    vzz_cal = shs(vnm, nmax, h, 'vzz');
+    vxx_cal = shs(vnm, nmax, h, 'vxx');
+    vyy_cal = shs(vnm, nmax, h, 'vyy');
+    vzzz_cal = shs(vnm, nmax, h, 'vzzz');
+    vxxz_cal = shs(vnm, nmax, h, 'vxxz');
+    vyyz_cal = shs(vnm, nmax, h, 'vyyz');
 
     ae_nmax_12_10_v(i) = AE(v_cal, v_ref);
     ae_nmax_12_10_vz(i) = AE(vz_cal, vz_ref);
@@ -544,17 +544,17 @@ linewidth = 0.8;
 Nmax = 0 : 50 : 2000;
 
 nexttile(inner)
-scatter(Nmax, ae_nmax_1_260_v(1:5:end), mksz, 'filled', 'o', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(1, :), 'LineWidth', linewidth);
+scatter(Nmax, ae_nmax_1_260_v, mksz, 'filled', 'o', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(1, :), 'LineWidth', linewidth);
 hold on
-scatter(Nmax, ae_nmax_1_260_vz(1:5:end), mksz, 'o', 'MarkerEdgeColor', cmp(2, :), 'LineWidth', linewidth);
-scatter(Nmax, ae_nmax_1_260_vzz(1:5:end), mksz, 'filled', 's', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(3, :), 'LineWidth', linewidth);
-scatter(Nmax, ae_nmax_1_260_vxx(1:5:end), mksz, 's', 'MarkerEdgeColor', cmp(4, :), 'LineWidth', linewidth);
-scatter(Nmax, ae_nmax_1_260_vyy(1:5:end), mksz, 'filled', '^', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(5, :), 'LineWidth', linewidth);
-scatter(Nmax, ae_nmax_1_260_vzzz(1:5:end), mksz, '^', 'MarkerEdgeColor', cmp(6, :), 'LineWidth', linewidth);
-scatter(Nmax, ae_nmax_1_260_vxxz(1:5:end), mksz, 'filled', 'v', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(7, :), 'LineWidth', linewidth);
-scatter(Nmax, ae_nmax_1_260_vyyz(1:5:end), mksz, 'v', 'MarkerEdgeColor', cmp(8, :), 'LineWidth', linewidth);
-scatter(Nmax, L1_nmax_1_260(1:5:end), mksz, 'x', 'MarkerEdgeColor', cmp(9, :), 'LineWidth', linewidth);
-scatter(Nmax, L2_nmax_1_260(1:5:end), mksz, '+', 'MarkerEdgeColor', cmp(9, :), 'LineWidth', linewidth);
+scatter(Nmax, ae_nmax_1_260_vz, mksz, 'o', 'MarkerEdgeColor', cmp(2, :), 'LineWidth', linewidth);
+scatter(Nmax, ae_nmax_1_260_vzz, mksz, 'filled', 's', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(3, :), 'LineWidth', linewidth);
+scatter(Nmax, ae_nmax_1_260_vxx, mksz, 's', 'MarkerEdgeColor', cmp(4, :), 'LineWidth', linewidth);
+scatter(Nmax, ae_nmax_1_260_vyy, mksz, 'filled', '^', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(5, :), 'LineWidth', linewidth);
+scatter(Nmax, ae_nmax_1_260_vzzz, mksz, '^', 'MarkerEdgeColor', cmp(6, :), 'LineWidth', linewidth);
+scatter(Nmax, ae_nmax_1_260_vxxz, mksz, 'filled', 'v', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(7, :), 'LineWidth', linewidth);
+scatter(Nmax, ae_nmax_1_260_vyyz, mksz, 'v', 'MarkerEdgeColor', cmp(8, :), 'LineWidth', linewidth);
+scatter(Nmax, L1_nmax_1_260, mksz, 'x', 'MarkerEdgeColor', cmp(9, :), 'LineWidth', linewidth);
+scatter(Nmax, L2_nmax_1_260, mksz, '+', 'MarkerEdgeColor', cmp(9, :), 'LineWidth', linewidth);
 
 xlabel(inner, 'Truncated harmonic degree $n_{\mathrm{max}}$', 'Interpreter', 'latex', 'fontsize', fontsize);
 xlim([0, 2000]);
@@ -567,15 +567,15 @@ set(gca, 'FontSize', fontsize, 'GridLineStyle', '--', 'XMinorTick', true, 'YMino
 
 % b
 nexttile(inner)
-scatter(Nmax, re_nmax_1_260_v(1:5:end), mksz, 'filled', 'o', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(1, :), 'LineWidth', linewidth);
+scatter(Nmax, re_nmax_1_260_v, mksz, 'filled', 'o', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(1, :), 'LineWidth', linewidth);
 hold on
-scatter(Nmax, re_nmax_1_260_vz(1:5:end), mksz, 'o', 'MarkerEdgeColor', cmp(2, :), 'LineWidth', linewidth);
-scatter(Nmax, re_nmax_1_260_vzz(1:5:end), mksz, 'filled', 's', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(3, :), 'LineWidth', linewidth);
-scatter(Nmax, re_nmax_1_260_vxx(1:5:end), mksz, 's', 'MarkerEdgeColor', cmp(4, :), 'LineWidth', linewidth);
-scatter(Nmax, re_nmax_1_260_vyy(1:5:end), mksz, 'filled', '^', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(5, :), 'LineWidth', linewidth);
-scatter(Nmax, re_nmax_1_260_vzzz(1:5:end), mksz, '^', 'MarkerEdgeColor', cmp(6, :), 'LineWidth', linewidth);
-scatter(Nmax, re_nmax_1_260_vxxz(1:5:end), mksz, 'filled', 'v', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(7, :), 'LineWidth', linewidth);
-scatter(Nmax, re_nmax_1_260_vyyz(1:5:end), mksz, 'v', 'MarkerEdgeColor', cmp(8, :), 'LineWidth', linewidth);
+scatter(Nmax, re_nmax_1_260_vz, mksz, 'o', 'MarkerEdgeColor', cmp(2, :), 'LineWidth', linewidth);
+scatter(Nmax, re_nmax_1_260_vzz, mksz, 'filled', 's', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(3, :), 'LineWidth', linewidth);
+scatter(Nmax, re_nmax_1_260_vxx, mksz, 's', 'MarkerEdgeColor', cmp(4, :), 'LineWidth', linewidth);
+scatter(Nmax, re_nmax_1_260_vyy, mksz, 'filled', '^', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(5, :), 'LineWidth', linewidth);
+scatter(Nmax, re_nmax_1_260_vzzz, mksz, '^', 'MarkerEdgeColor', cmp(6, :), 'LineWidth', linewidth);
+scatter(Nmax, re_nmax_1_260_vxxz, mksz, 'filled', 'v', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(7, :), 'LineWidth', linewidth);
+scatter(Nmax, re_nmax_1_260_vyyz, mksz, 'v', 'MarkerEdgeColor', cmp(8, :), 'LineWidth', linewidth);
 
 ylim([-15, 10]);
 xlim([0, 2000]);
@@ -591,19 +591,19 @@ linewidth = 0.5;
 Nmax = 0 : 50 : 10000;
 % c
 nexttile(inner)
-scatter(Nmax, ae_nmax_12_10_v(1:5:end), mksz, 'filled', 'o', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(1, :), 'LineWidth', linewidth);
+scatter(Nmax, ae_nmax_12_10_v, mksz, 'filled', 'o', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(1, :), 'LineWidth', linewidth);
 hold on
-scatter(Nmax, ae_nmax_12_10_vz(1:5:end), mksz, 'o', 'MarkerEdgeColor', cmp(2, :), 'LineWidth', linewidth);
-scatter(Nmax, ae_nmax_12_10_vzz(1:5:end), mksz, 'filled', 's', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(3, :), 'LineWidth', linewidth);
-scatter(Nmax, ae_nmax_12_10_vxx(1:5:end), mksz, 's', 'MarkerEdgeColor', cmp(4, :), 'LineWidth', linewidth);
-scatter(Nmax, ae_nmax_12_10_vyy(1:5:end), mksz, 'filled', '^', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(5, :), 'LineWidth', linewidth);
-scatter(Nmax, ae_nmax_12_10_vzzz(1:5:end), mksz, '^', 'MarkerEdgeColor', cmp(6, :), 'LineWidth', linewidth);
-scatter(Nmax, ae_nmax_12_10_vxxz(1:5:end), mksz, 'filled', 'v', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(7, :), 'LineWidth', linewidth);
-scatter(Nmax, ae_nmax_12_10_vyyz(1:5:end), mksz, 'v', 'MarkerEdgeColor', cmp(8, :), 'LineWidth', linewidth);
-scatter(Nmax, L1_nmax_12_10(1:5:end), mksz, 'x', 'MarkerEdgeColor', cmp(9, :), 'LineWidth', linewidth);
-scatter(Nmax, L2_nmax_12_10(1:5:end), mksz, '+', 'MarkerEdgeColor', cmp(9, :), 'LineWidth', linewidth);
+scatter(Nmax, ae_nmax_12_10_vz, mksz, 'o', 'MarkerEdgeColor', cmp(2, :), 'LineWidth', linewidth);
+scatter(Nmax, ae_nmax_12_10_vzz, mksz, 'filled', 's', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(3, :), 'LineWidth', linewidth);
+scatter(Nmax, ae_nmax_12_10_vxx, mksz, 's', 'MarkerEdgeColor', cmp(4, :), 'LineWidth', linewidth);
+scatter(Nmax, ae_nmax_12_10_vyy, mksz, 'filled', '^', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(5, :), 'LineWidth', linewidth);
+scatter(Nmax, ae_nmax_12_10_vzzz, mksz, '^', 'MarkerEdgeColor', cmp(6, :), 'LineWidth', linewidth);
+scatter(Nmax, ae_nmax_12_10_vxxz, mksz, 'filled', 'v', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(7, :), 'LineWidth', linewidth);
+scatter(Nmax, ae_nmax_12_10_vyyz, mksz, 'v', 'MarkerEdgeColor', cmp(8, :), 'LineWidth', linewidth);
+scatter(Nmax, L1_nmax_12_10, mksz, 'x', 'MarkerEdgeColor', cmp(9, :), 'LineWidth', linewidth);
+scatter(Nmax, L2_nmax_12_10, mksz, '+', 'MarkerEdgeColor', cmp(9, :), 'LineWidth', linewidth);
 xlim([0, 10000]);
-xticks(0:2500:10000);
+xticks(0 : 2500 : 10000);
 ylim([-40, 10]);
 grid on
 box on
@@ -613,19 +613,19 @@ set(gca, 'FontSize', fontsize, 'GridLineStyle', '--', 'XMinorTick', true, 'YMino
 
 % d
 nexttile(inner)
-scatter(Nmax, re_nmax_12_10_v(1:5:end), mksz, 'filled', 'o', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(1, :), 'LineWidth', linewidth);
+scatter(Nmax, re_nmax_12_10_v, mksz, 'filled', 'o', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(1, :), 'LineWidth', linewidth);
 hold on
-scatter(Nmax, re_nmax_12_10_vz(1:5:end), mksz, 'o', 'MarkerEdgeColor', cmp(2, :), 'LineWidth', linewidth);
-scatter(Nmax, re_nmax_12_10_vzz(1:5:end), mksz, 'filled', 's', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(3, :), 'LineWidth', linewidth);
-scatter(Nmax, re_nmax_12_10_vxx(1:5:end), mksz, 's', 'MarkerEdgeColor', cmp(4, :), 'LineWidth', linewidth);
-scatter(Nmax, re_nmax_12_10_vyy(1:5:end), mksz, 'filled', '^', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(5, :), 'LineWidth', linewidth);
-scatter(Nmax, re_nmax_12_10_vzzz(1:5:end), mksz, '^', 'MarkerEdgeColor', cmp(6, :), 'LineWidth', linewidth);
-scatter(Nmax, re_nmax_12_10_vxxz(1:5:end), mksz, 'filled', 'v', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(7, :), 'LineWidth', linewidth);
-scatter(Nmax, re_nmax_12_10_vyyz(1:5:end), mksz, 'v', 'MarkerEdgeColor', cmp(8, :), 'LineWidth', linewidth);
+scatter(Nmax, re_nmax_12_10_vz, mksz, 'o', 'MarkerEdgeColor', cmp(2, :), 'LineWidth', linewidth);
+scatter(Nmax, re_nmax_12_10_vzz, mksz, 'filled', 's', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(3, :), 'LineWidth', linewidth);
+scatter(Nmax, re_nmax_12_10_vxx, mksz, 's', 'MarkerEdgeColor', cmp(4, :), 'LineWidth', linewidth);
+scatter(Nmax, re_nmax_12_10_vyy, mksz, 'filled', '^', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(5, :), 'LineWidth', linewidth);
+scatter(Nmax, re_nmax_12_10_vzzz, mksz, '^', 'MarkerEdgeColor', cmp(6, :), 'LineWidth', linewidth);
+scatter(Nmax, re_nmax_12_10_vxxz, mksz, 'filled', 'v', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(7, :), 'LineWidth', linewidth);
+scatter(Nmax, re_nmax_12_10_vyyz, mksz, 'v', 'MarkerEdgeColor', cmp(8, :), 'LineWidth', linewidth);
 
 ylim([-15, 10]);
 xlim([0, 10000]);
-xticks(0:2500:10000);
+xticks(0 : 2500 : 10000);
 ylabel('Relative errors in $\log_{10}$', 'Interpreter', 'latex', 'fontsize', fontsize)
 grid on
 box on
@@ -651,9 +651,9 @@ leg.Box = "off";
 leg.Layout.Tile = 'South';
 
 set(gcf,'Units','centimeters','Position', [1.3, 3, 14, 15]);
-exportgraphics(gcf, '../manuscript/JG/figures/tess_nmax.pdf');
+exportgraphics(gcf, '../manuscript/marked/tess_nmax.pdf');
 %% theta0
-nmax = 2160;
+nmax = 1000;
 h = 260 * 1e3;
 dlat = 1 / 12;
 Lat0 = 0 : dlat : 90;
@@ -686,13 +686,13 @@ for i = 1 : num
     lat0 = Lat0(i);
     vnm = sha(lon0, lat0, nmax, dlat, dlat);
     v_cal = shs(vnm, nmax, h, 'v');
-    vz_cal = shs(vnm, nmax, h, 'vz') / 1e5;
-    vzz_cal = shs(vnm, nmax, h, 'vzz') / 1e9;
-    vxx_cal = shs(vnm, nmax, h, 'vxx') / 1e9;
-    vyy_cal = shs(vnm, nmax, h, 'vyy') / 1e9;
-    vzzz_cal = shs(vnm, nmax, h, 'vzzz') / 1e15;
-    vxxz_cal = shs(vnm, nmax, h, 'vxxz') / 1e15;
-    vyyz_cal = shs(vnm, nmax, h, 'vyyz') / 1e15;
+    vz_cal = shs(vnm, nmax, h, 'vz');
+    vzz_cal = shs(vnm, nmax, h, 'vzz');
+    vxx_cal = shs(vnm, nmax, h, 'vxx');
+    vyy_cal = shs(vnm, nmax, h, 'vyy');
+    vzzz_cal = shs(vnm, nmax, h, 'vzzz');
+    vxxz_cal = shs(vnm, nmax, h, 'vxxz');
+    vyyz_cal = shs(vnm, nmax, h, 'vyyz');
 
     ae_lat0_v(i) = AE(v_cal, v_ref(i));
     ae_lat0_vz(i) = AE(vz_cal, vz_ref(i));
@@ -714,6 +714,7 @@ for i = 1 : num
     re_lat0_vxxz(i) = RE(vxxz_cal, vxxz_ref(i));
     re_lat0_vyyz(i) = RE(vyyz_cal, vyyz_ref(i));
 end
+CLat0 = 90 - Lat0;
 %%
 fontsize = 9;
 fig = figure;
@@ -724,22 +725,22 @@ mksz = 4;
 linewidth = 0.5;
 % a
 nexttile(inner)
-plot(Lat0, log10(abs(v_ref)), 'Color', cmp(1, :), 'LineWidth', 1.2);
+plot(CLat0, log10(abs(v_ref)), 'Color', cmp(1, :), 'LineWidth', 1.2);
 hold on
-plot(Lat0, log10(abs(vz_ref)), 'Color', cmp(2, :), 'LineWidth', 1.2);
-plot(Lat0, log10(abs(vzz_ref)), 'Color', cmp(3, :), 'LineWidth', 1.2);
-plot(Lat0, log10(abs(vxx_ref)), 'Color',  cmp(4, :), 'LineWidth', 1.2);
-plot(Lat0, log10(abs(vyy_ref)), 'Color', cmp(5, :), 'LineWidth', 1.2);
-plot(Lat0, log10(abs(vzzz_ref)), 'Color', cmp(6, :), 'LineWidth', 1.2);
-plot(Lat0, log10(abs(vxxz_ref)), 'Color', cmp(7, :), 'LineWidth', 1.2);
-plot(Lat0, log10(abs(vyyz_ref)), 'Color', cmp(8, :), 'LineWidth', 1.2);
+plot(CLat0, log10(abs(vz_ref)), 'Color', cmp(2, :), 'LineWidth', 1.2);
+plot(CLat0, log10(abs(vzz_ref)), 'Color', cmp(3, :), 'LineWidth', 1.2);
+plot(CLat0, log10(abs(vxx_ref)), 'Color',  cmp(4, :), 'LineWidth', 1.2);
+plot(CLat0, log10(abs(vyy_ref)), 'Color', cmp(5, :), 'LineWidth', 1.2);
+plot(CLat0, log10(abs(vzzz_ref)), 'Color', cmp(6, :), 'LineWidth', 1.2);
+plot(CLat0, log10(abs(vxxz_ref)), 'Color', cmp(7, :), 'LineWidth', 1.2);
+plot(CLat0, log10(abs(vyyz_ref)), 'Color', cmp(8, :), 'LineWidth', 1.2);
 leg = legend('$V$', '$V_z$', '$V_{zz}$', '$V_{xx}$', '$V_{yy}$', '$V_{zzz}$', '$V_{xxz}$', '$V_{yyz}$', 'fontsize', fontsize, 'NumColumns', 10, 'Interpreter', 'latex', 'location', 'southeast');
 leg.ItemTokenSize = [10, 10];
 
 xlim([0, 90]);
 ylim([-30, 0]);
 xticks(0:15:90);
-set(gca, 'TickLabelInterpreter', 'latex', 'XTickLabel', {'$90^\circ$', '$75^\circ$', '$60^\circ$', '$45^\circ$', '$30^\circ$', '$15^\circ$', '$0^\circ$'})
+set(gca, 'TickLabelInterpreter', 'latex', 'XTickLabel', {'$0^\circ$', '$15^\circ$', '$30^\circ$', '$45^\circ$', '$60^\circ$', '$75^\circ$', '$90^\circ$'})
 ylabel('Absolute field values in $\log_{10}$', 'Interpreter', 'latex', 'fontsize', fontsize)
 grid on
 box on
@@ -747,21 +748,21 @@ title('(a)');
 set(gca, 'FontSize', fontsize, 'GridLineStyle', '--', 'XMinorTick', true, 'YMinorTick', true);
 
 nexttile(inner)
-scatter(Lat0, ae_lat0_v, mksz, 'filled', 'o', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(1, :), 'LineWidth', linewidth);
+scatter(CLat0, ae_lat0_v, mksz, 'filled', 'o', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(1, :), 'LineWidth', linewidth);
 hold on
-scatter(Lat0, ae_lat0_vz, mksz, 'o', 'MarkerEdgeColor', cmp(2, :), 'LineWidth', linewidth);
-scatter(Lat0, ae_lat0_vzz, mksz, 'filled', 's', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(3, :), 'LineWidth', linewidth);
-scatter(Lat0, ae_lat0_vxx, mksz, 's', 'MarkerEdgeColor', cmp(4, :), 'LineWidth', linewidth);
-scatter(Lat0, ae_lat0_vyy, mksz, 'filled', '^', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(5, :), 'LineWidth', linewidth);
-scatter(Lat0, ae_lat0_vzzz, mksz, '^', 'MarkerEdgeColor', cmp(6, :), 'LineWidth', linewidth);
-scatter(Lat0, ae_lat0_vxxz, mksz, 'filled', 'v', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(7, :), 'LineWidth', linewidth);
-scatter(Lat0, ae_lat0_vyyz, mksz, 'v', 'MarkerEdgeColor', cmp(8, :), 'LineWidth', linewidth);
-scatter(Lat0, L1_lat0, mksz, 'x', 'MarkerEdgeColor', cmp(9, :), 'LineWidth', 0.5);
-scatter(Lat0, L2_lat0, mksz, '+', 'MarkerEdgeColor', cmp(9, :), 'LineWidth', 0.5);
-xlabel(inner, 'Tesseroid center colatitude $\theta_0^\prime$', 'Interpreter', 'latex', 'fontsize', fontsize)
+scatter(CLat0, ae_lat0_vz, mksz, 'o', 'MarkerEdgeColor', cmp(2, :), 'LineWidth', linewidth);
+scatter(CLat0, ae_lat0_vzz, mksz, 'filled', 's', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(3, :), 'LineWidth', linewidth);
+scatter(CLat0, ae_lat0_vxx, mksz, 's', 'MarkerEdgeColor', cmp(4, :), 'LineWidth', linewidth);
+scatter(CLat0, ae_lat0_vyy, mksz, 'filled', '^', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(5, :), 'LineWidth', linewidth);
+scatter(CLat0, ae_lat0_vzzz, mksz, '^', 'MarkerEdgeColor', cmp(6, :), 'LineWidth', linewidth);
+scatter(CLat0, ae_lat0_vxxz, mksz, 'filled', 'v', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(7, :), 'LineWidth', linewidth);
+scatter(CLat0, ae_lat0_vyyz, mksz, 'v', 'MarkerEdgeColor', cmp(8, :), 'LineWidth', linewidth);
+scatter(CLat0, L1_lat0, mksz, 'x', 'MarkerEdgeColor', cmp(9, :), 'LineWidth', 0.5);
+scatter(CLat0, L2_lat0, mksz, '+', 'MarkerEdgeColor', cmp(9, :), 'LineWidth', 0.5);
+xlabel(inner, 'Tesseroid central colatitude $\theta_0^\prime$', 'Interpreter', 'latex', 'fontsize', fontsize)
 xlim([0, 90]);
 xticks(0:15:90);
-set(gca, 'TickLabelInterpreter', 'latex', 'XTickLabel', {'$90^\circ$', '$75^\circ$', '$60^\circ$', '$45^\circ$', '$30^\circ$', '$15^\circ$', '$0^\circ$'})
+set(gca, 'TickLabelInterpreter', 'latex', 'XTickLabel', {'$0^\circ$', '$15^\circ$', '$30^\circ$', '$45^\circ$', '$60^\circ$', '$75^\circ$', '$90^\circ$'})
 ylim([-40, -10]);
 grid on
 box on
@@ -771,20 +772,20 @@ set(gca, 'FontSize', fontsize, 'GridLineStyle', '--', 'XMinorTick', true, 'YMino
 
 % b
 nexttile(inner)
-scatter(Lat0, re_lat0_v, mksz, 'filled', 'o', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(1, :), 'LineWidth', linewidth);
+scatter(CLat0, re_lat0_v, mksz, 'filled', 'o', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(1, :), 'LineWidth', linewidth);
 hold on
-scatter(Lat0, re_lat0_vz, mksz, 'o', 'MarkerEdgeColor', cmp(2, :), 'LineWidth', linewidth);
-scatter(Lat0, re_lat0_vzz, mksz, 'filled', 's', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(3, :), 'LineWidth', linewidth);
-scatter(Lat0, re_lat0_vxx, mksz, 's', 'MarkerEdgeColor', cmp(4, :), 'LineWidth', linewidth);
-scatter(Lat0, re_lat0_vyy, mksz, 'filled', '^', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(5, :), 'LineWidth', linewidth);
-scatter(Lat0, re_lat0_vzzz, mksz, '^', 'MarkerEdgeColor', cmp(6, :), 'LineWidth', linewidth);
-scatter(Lat0, re_lat0_vxxz, mksz, 'filled', 'v', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(7, :), 'LineWidth', linewidth);
-scatter(Lat0, re_lat0_vyyz, mksz, 'v', 'MarkerEdgeColor', cmp(8, :), 'LineWidth', linewidth);
+scatter(CLat0, re_lat0_vz, mksz, 'o', 'MarkerEdgeColor', cmp(2, :), 'LineWidth', linewidth);
+scatter(CLat0, re_lat0_vzz, mksz, 'filled', 's', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(3, :), 'LineWidth', linewidth);
+scatter(CLat0, re_lat0_vxx, mksz, 's', 'MarkerEdgeColor', cmp(4, :), 'LineWidth', linewidth);
+scatter(CLat0, re_lat0_vyy, mksz, 'filled', '^', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(5, :), 'LineWidth', linewidth);
+scatter(CLat0, re_lat0_vzzz, mksz, '^', 'MarkerEdgeColor', cmp(6, :), 'LineWidth', linewidth);
+scatter(CLat0, re_lat0_vxxz, mksz, 'filled', 'v', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(7, :), 'LineWidth', linewidth);
+scatter(CLat0, re_lat0_vyyz, mksz, 'v', 'MarkerEdgeColor', cmp(8, :), 'LineWidth', linewidth);
 
 xlim([0, 90]);
 xticks(0:15:90);
 ylim([-16,-4])
-set(gca, 'TickLabelInterpreter', 'latex', 'XTickLabel', {'$90^\circ$', '$75^\circ$', '$60^\circ$', '$45^\circ$', '$30^\circ$', '$15^\circ$', '$0^\circ$'})
+set(gca, 'TickLabelInterpreter', 'latex', 'XTickLabel', {'$0^\circ$', '$15^\circ$', '$30^\circ$', '$45^\circ$', '$60^\circ$', '$75^\circ$', '$90^\circ$'})
 ylabel('Relative errors in $\log_{10}$', 'Interpreter', 'latex', 'fontsize', fontsize)
 grid on
 box on
@@ -810,4 +811,4 @@ leg.Box = "off";
 leg.Layout.Tile = 'South';
 
 set(gcf,'Units','centimeters','Position', [1.3 3 13, 17]);
-exportgraphics(gcf, '../manuscript/JG/figures/tess_lat0.pdf');
+exportgraphics(gcf, '../manuscript/marked/tess_lat0.pdf');

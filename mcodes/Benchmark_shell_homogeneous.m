@@ -10,7 +10,7 @@ G = 6.672e-11;
 M = 5.965e24;
 a = R2;
 rho0 = 2670;
-clon = 0; clat = 0;
+clon = 10; clat = 60;
 fref = @(xh) shell_geff_cons(R1, R2, R2 + xh, rho0, G);
 RE = @(x, xref) log10(abs(x ./ xref - 1));
 AE = @(x, xref) log10(abs(x - xref));
@@ -54,9 +54,9 @@ lon0 = -180 + dlon / 2 : dlon: 180 - dlon / 2;
 lon0 = lon0(randperm(length(lon0)));
 vnm_1_12 = sha_fft(lon0, lat0, nmax, dlat, dlon);
 
-% save('test_shell_dsn.mat', 'vnm_30', 'vnm_10', 'vnm_1', 'vnm_1_2', 'vnm_1_12');
+save('test_shell_dsn.mat', 'vnm_30', 'vnm_10', 'vnm_1', 'vnm_1_2', 'vnm_1_12');
 %%
-% load 'test_shell_dsn.mat'
+load 'test_shell_dsn.mat'
 vnm = vnm_30;
 re_c00_30 = RE(vnm(1, 3), vnm_ref); ae_c00_30 = AE(vnm(1, 3), vnm_ref);
 vnm(1, 3) = vnm(1, 3) - vnm_ref;
@@ -116,7 +116,7 @@ leg.Layout.Tile = 'South';
 leg.Box = "off";
 
 set(gcf,'Units','centimeters','Position',[1.3, 3, 13, 8]);
-exportgraphics(gcf, '../manuscript/JG/figures/shell_SEDV.pdf');
+exportgraphics(gcf, '../manuscript/marked/shell_SEDV.pdf');
 %%
 vnm = vnm_1_12;
 H = 0 : 10 : 500;
@@ -148,13 +148,13 @@ for i = 1 : num
     [v_ref, vz_ref, vzz_ref, vxx_ref, vzzz_ref, vxxz_ref] = fref(h);
 
     v_cal = shs(vnm, nmax, h, 'v');
-    vz_cal = shs(vnm, nmax, h, 'vz') / 1e5;
-    vzz_cal = shs(vnm, nmax, h, 'vzz') / 1e9;
-    vxx_cal = shs(vnm, nmax, h, 'vxx') / 1e9;
-    vyy_cal = shs(vnm, nmax, h, 'vyy') / 1e9;
-    vzzz_cal = shs(vnm, nmax, h, 'vzzz') / 1e15;
-    vxxz_cal = shs(vnm, nmax, h, 'vxxz') / 1e15;
-    vyyz_cal = shs(vnm, nmax, h, 'vyyz') / 1e15;
+    vz_cal = shs(vnm, nmax, h, 'vz');
+    vzz_cal = shs(vnm, nmax, h, 'vzz');
+    vxx_cal = shs(vnm, nmax, h, 'vxx');
+    vyy_cal = shs(vnm, nmax, h, 'vyy');
+    vzzz_cal = shs(vnm, nmax, h, 'vzzz');
+    vxxz_cal = shs(vnm, nmax, h, 'vxxz');
+    vyyz_cal = shs(vnm, nmax, h, 'vyyz');
 
     ae_v(i) = AE(v_cal, v_ref);
     ae_vz(i) = AE(vz_cal, vz_ref);
@@ -246,19 +246,22 @@ leg.Layout.Tile = 'South';
 axis off;
 
 set(gcf,'Units','centimeters','Position', [1.3 3 13, 8]);
-exportgraphics(gcf, '../manuscript/JG/figures/shell_H.pdf');
+exportgraphics(gcf, '../manuscript/marked/shell_H.pdf');
 %%
+dlon = 1 / 12;
+lon0 = -180 + dlon / 2 : dlon: 180 - dlon / 2;
+vnm = sha(lon0, 0, nmax, 180, dlon);
 h = 10 * 1e3;
 [v_ref, vz_ref, vzz_ref, vxx_ref, vzzz_ref, vxxz_ref] = fref(h);
 Clat1 = 70 : 1/12 : 90;
 v_cal = shs2(vnm, Clat1, nmax, h, 'v');
-vz_cal = shs2(vnm, Clat1, nmax, h, 'vz') / 1e5;
-vzz_cal = shs2(vnm, Clat1, nmax, h, 'vzz') / 1e9;
-vxx_cal = shs2(vnm, Clat1, nmax, h, 'vxx') / 1e9;
-vyy_cal = shs2(vnm, Clat1, nmax, h, 'vyy') / 1e9;
-vzzz_cal = shs2(vnm, Clat1, nmax, h, 'vzzz') / 1e15;
-vxxz_cal = shs2(vnm, Clat1, nmax, h, 'vxxz') / 1e15;
-vyyz_cal = shs2(vnm, Clat1, nmax, h, 'vyyz') / 1e15;
+vz_cal = shs2(vnm, Clat1, nmax, h, 'vz');
+vzz_cal = shs2(vnm, Clat1, nmax, h, 'vzz');
+vxx_cal = shs2(vnm, Clat1, nmax, h, 'vxx');
+vyy_cal = shs2(vnm, Clat1, nmax, h, 'vyy');
+vzzz_cal = shs2(vnm, Clat1, nmax, h, 'vzzz');
+vxxz_cal = shs2(vnm, Clat1, nmax, h, 'vxxz');
+vyyz_cal = shs2(vnm, Clat1, nmax, h, 'vyyz');
 
 ae_clat1_v = AE(v_cal, v_ref);
 ae_clat1_vz = AE(vz_cal, vz_ref);
@@ -282,13 +285,13 @@ re_clat1_vyyz = RE(vyyz_cal, vxxz_ref);
 
 Clat2 = -70 : -1/12 : -90;
 v_cal = shs2(vnm, Clat2, nmax, h, 'v');
-vz_cal = shs2(vnm, Clat2, nmax, h, 'vz') / 1e5;
-vzz_cal = shs2(vnm, Clat2, nmax, h, 'vzz') / 1e9;
-vxx_cal = shs2(vnm, Clat2, nmax, h, 'vxx') / 1e9;
-vyy_cal = shs2(vnm, Clat2, nmax, h, 'vyy') / 1e9;
-vzzz_cal = shs2(vnm, Clat2, nmax, h, 'vzzz') / 1e15;
-vxxz_cal = shs2(vnm, Clat2, nmax, h, 'vxxz') / 1e15;
-vyyz_cal = shs2(vnm, Clat2, nmax, h, 'vyyz') / 1e15;
+vz_cal = shs2(vnm, Clat2, nmax, h, 'vz');
+vzz_cal = shs2(vnm, Clat2, nmax, h, 'vzz');
+vxx_cal = shs2(vnm, Clat2, nmax, h, 'vxx');
+vyy_cal = shs2(vnm, Clat2, nmax, h, 'vyy');
+vzzz_cal = shs2(vnm, Clat2, nmax, h, 'vzzz');
+vxxz_cal = shs2(vnm, Clat2, nmax, h, 'vxxz');
+vyyz_cal = shs2(vnm, Clat2, nmax, h, 'vyyz');
 
 ae_clat2_v = AE(v_cal, v_ref);
 ae_clat2_vz = AE(vz_cal, vz_ref);
@@ -312,14 +315,15 @@ re_clat2_vyyz = RE(vyyz_cal, vxxz_ref);
 %% plot
 Clat1 = 90 - Clat1;
 Clat2 = 90 - Clat2;
+%%
 fontsize = 9;
 fig = figure;
 outer = tiledlayout(fig, 30, 1, "Padding", 'tight', 'TileSpacing', 'tight');
 inner = tiledlayout(2, 2, 'Padding', "compact", 'TileSpacing', 'compact', Parent=outer);
 inner.Layout.TileSpan = [29, 1];
 
-mksz = 8;
-linewidth = 0.8;
+mksz = 4;
+linewidth = 0.3;
 
 nexttile(inner)
 scatter(Clat1, ae_clat1_v, mksz, 'filled', 'o', 'MarkerEdgeColor', 'none', 'MarkerFaceColor', cmp(1, :), 'LineWidth', linewidth);
@@ -340,7 +344,6 @@ grid on
 box on
 title('(a)');
 ylabel('Absolute errors in $\log_{10}$', 'Interpreter', 'latex', 'fontsize', fontsize);
-set(gca, 'XDir', 'reverse');
 set(gca, 'TickLabelInterpreter', 'latex', 'XTickLabel', {'$0^\circ$', '$5^\circ$', '$10^\circ$', '$15^\circ$', '$20^\circ$'});
 set(gca, 'FontSize', fontsize, 'GridLineStyle', '--', 'XMinorTick', true, 'YMinorTick', true);
 
@@ -362,7 +365,6 @@ ylabel('Relative errors in $\log_{10}$', 'Interpreter', 'latex', 'fontsize', fon
 grid on
 box on
 title('(b)');
-set(gca, 'XDir', 'reverse');
 set(gca, 'TickLabelInterpreter', 'latex', 'XTickLabel', {'$0^\circ$', '$5^\circ$', '$10^\circ$', '$15^\circ$', '$20^\circ$'});
 set(gca, 'FontSize', fontsize, 'GridLineStyle', '--', 'XMinorTick', true, 'YMinorTick', true);
 xlabel(inner, 'Computation point colatitude $\theta$', 'Interpreter', 'latex', 'fontsize', fontsize)
@@ -429,4 +431,4 @@ leg.Layout.Tile = 'South';
 axis off;
 
 set(gcf,'Units','centimeters','Position', [1.3 3 13, 13]);
-exportgraphics(gcf, '../manuscript/JG/figures/shell_Clat.pdf');
+exportgraphics(gcf, '../manuscript/marked/shell_Clat.pdf');
