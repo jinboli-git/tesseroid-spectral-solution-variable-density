@@ -22,4 +22,8 @@ Spherical harmonic expansions for the gravitational field of a tesseroid with ra
 
 - Ensure the `data/` directory is available and correctly referenced in the MATLAB scripts before running.
 
+## Citation
+
+- If you use this code in your research, please cite
+  Li J, Sun H (2026) Spherical harmonic expansions for the gravitational field of a tesseroid with radially variable density. J Geod 100:52–78. https://doi.org/10.1007/s00190-026-02061-w
 
